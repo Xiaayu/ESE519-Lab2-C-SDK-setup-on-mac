@@ -99,8 +99,15 @@ Open the terminal and type following to obtain the board_name:
 ls /dev/tty.*
 ```
 
-And then type the following code to connect with screen:
+And then type the following code to connect with screen (remember to replace the board_name with the one obtain above):
 
 ```
 screen /dev/tty.board_name 115200
 ```
+
+#### b) Connect to RP2040
+
+Connect the RP2040 with a micro-usb cable. Hold down `BOOTSEL` button and at the same time hold `RESET` button, and then release `RESET` button. We can find the Mass Storage Device on the screen. Drag the `uf2` file to it, it will eject automatically. Then on the terminal we can find it prints "Hello,  world!"
+
+<img width="646" alt="Screen Shot 2022-10-11 at 5 59 53 PM" src="https://user-images.githubusercontent.com/114005477/195354355-27c3ba78-5e7b-4bcc-b1fd-f7abcd8ec617.png">
+

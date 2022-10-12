@@ -58,15 +58,49 @@ $ git clone -b master https://github.com/raspberrypi/pico-examples.git
 
 
 ### Step 3: Using Visual Studio Code and Building with CMake Tools
-* Installing VSCode
+#### a) Installing VSCode
+
 [Visual Studio Code (VSCode)](https://code.visualstudio.com/download) is a cross platform environment and runs on macOS, as well as Linux, and Microsoft Windows. [Download MacOS version](https://code.visualstudio.com/download) and drag it to Applications Folder.
 
-* Building with CMake Tools
 
-In the left bar find "extension" and search for "CMake Tools", entry the list and click install button.
+#### b) Building with CMake Tools
+
+* In the left bar find "extension" and search for "CMake Tools", entry the list and click install button.
+
 <img width="600" alt="Screen Shot 2022-10-11 at 9 23 16 PM" src="https://user-images.githubusercontent.com/114005477/195227414-21cfeeed-7727-4a88-87de-aaae6bbef757.png">
 
-Set the PICO_SDK_PATH environment variable. Navigate to the pico-examples directory and create a .vscode directory and add a file called settings.json to tell CMake Tools to location of the SDK.
+* Set the PICO_SDK_PATH environment variable. Navigate to the pico-examples directory and create a .vscode directory and add a file called settings.json to tell CMake Tools to location of the SDK.
+
+```
+{
+    "cmake.environment": {
+        "PICO_SDK_PATH":"../../pico-sdk"
+    },
+}
+```
+
 <img width="600" alt="Screen Shot 2022-10-11 at 9 27 19 PM" src="https://user-images.githubusercontent.com/114005477/195227845-9845ed76-58e5-45e5-8a26-978a902a4a5a.png">
 
+* Then, click on the Cog Wheel at the bottom of the navigation bar on the left-hand side of the interface and select "Settings". Then in the Settings pane click on "Extensions" and the "CMake Tools configuration". Then scroll down to "Cmake: Generator" and enter "Unix Makefiles" into the box.
 
+<img width="600" alt="Screen Shot 2022-10-11 at 3 01 40 PM" src="https://user-images.githubusercontent.com/114005477/195229051-8eadd250-4031-46dc-ac49-700c7302a754.png">
+
+* Finally, go to the File menu and click on "Add Folder to Workspace..." and navigate to pico-examples repo and click "Okay". Select "GCC for arm-none- eabi" for your compiler. After download it, click on the "Build" button in the blue bottom bar. And this generate a new build folder with elf, bin and uf2 targets.
+
+<img width="250" alt="Screen Shot 2022-10-11 at 9 46 23 PM" src="https://user-images.githubusercontent.com/114005477/195229881-e18635a4-40d1-4bab-b81a-ec9dfd64d376.png">
+
+
+
+### Step 4: "Hello World" Example
+#### a) Serial Console on Mac
+Open the terminal and type following to obtain the board_name:
+
+```
+ls /dev/tty.*
+```
+
+And then type the following code to connect with screen:
+
+```
+screen /dev/tty.board_name 115200
+```
